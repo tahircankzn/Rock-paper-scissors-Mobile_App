@@ -1,6 +1,277 @@
-<MainWindow>
+WindowManager: 
+    
+    FirstWindow:
+    MainWindow:
+    OptionsWindow:
+    RuleWindow:
+
+
+    
+<OptionsWindow>
+    name : "options"
     canvas.before:
         Rectangle:
+            id : optionswall
+            pos: self.pos
+            size: self.size
+            source: 'background.png'
+    BoxLayout:
+        orientation: "vertical"
+        size : root.width , root.height
+
+        spacing : 30 # butonlar arası boşluk
+        padding: 40 # kenarlara olan uzaklık
+        GridLayout:
+            #size :  (0.1,0.9)               # root.width , root.height
+            cols : 2
+            size_hint : 1,0.3
+            Label:
+                text:"Oyuncu adınız :"
+                font_size:40
+            TextInput:
+                id : playername
+                text:""
+                font_size:40
+
+
+        GridLayout:
+            #size :  (0.1,0.9)               # root.width , root.height
+            cols : 1
+            size_hint : 1,0.3
+            Label:
+                text:"Oyuncu adınız 7 karakteri geçmemelidir"
+                font_size:40
+            
+
+
+        GridLayout:
+            #size :  (0.1,0.9)               # root.width , root.height
+            cols : 2
+            size_hint : 1,0.3
+            
+            Button:
+                text: "Gri tema"
+                font_size:50
+                size_hint: (0.2,0.2)
+                pos_hint: {"x":0.5,"y":0.5}
+                on_release:
+                    root.gri()
+                
+                    
+                    
+                    
+            Button:
+                text: "Mavi tema"
+                font_size:50
+                size_hint: (0.2,0.2)
+                pos_hint: {"x":0.5,"y":0.5}
+                on_release:
+                    root.mavi()
+                
+                    
+                    
+                    
+
+
+        GridLayout:
+            #size :  (0.1,0.9)               # root.width , root.height
+            cols : 1
+            size_hint : 1,0.1
+
+            
+            Button:
+                text: "Geri"
+                font_size:50
+                size_hint: (0.2,0.2)
+                pos_hint: {"x":0.5,"y":0.5}
+                on_release:
+                    root.nick()
+                    app.root.current = "first"
+                    root.manager.transition.direction = "right"
+
+<RuleWindow>
+    name : "rule"
+    canvas.before:
+        Rectangle:
+            id : rulewall
+            pos: self.pos
+            size: self.size
+            source: 'background.png'
+    BoxLayout:
+        orientation: "vertical"
+        size : root.width , root.height
+
+        spacing : 30 # butonlar arası boşluk
+        padding: 40 # kenarlara olan uzaklık
+        GridLayout:
+            #size :  (0.1,0.9)               # root.width , root.height
+            cols : 1
+            size_hint : 1,0.8
+
+            Label:
+                id :options1
+                text: "Oyun Kuralları :"
+                font_size : 100
+                color : "#FFFFFF"
+            Label:
+                id :options2
+                text: "Kılıç : Makas\nKalkan : Taş\nGladyatör : Kağıt"
+                font_size : 60
+                color : "#FFFFFF"
+            
+        GridLayout:
+            #size :  (0.1,0.9)               # root.width , root.height
+            cols : 1
+            size_hint : 1,0.2
+
+            
+            Button:
+                text: "Geri"
+                font_size:50
+                size_hint: (0.2,0.2)
+                pos_hint: {"x":0.5,"y":0.5}
+                on_release:
+                    app.root.current = "first"
+                    root.manager.transition.direction = "right"
+
+<FirstWindow>
+    name : "first"
+    canvas.before:
+        Rectangle:
+            id : firstwall
+            pos: self.pos
+            size: self.size
+            source: 'background.png'
+    GridLayout:
+        spacing : 20
+        cols : 3
+        #size_hint : 1,0.2
+        Label:  
+            text: ""
+        Label:  
+            text: "KILIÇ KALKAN"
+            font_size:50
+        Label:  
+            text: ""
+        Label:  
+            text: ""
+        Label:  
+            text: "GLADYATÖR"
+            font_size:50
+        Label:  
+            text: ""
+
+        Label:  
+            text: ""
+        RoundedButton12:
+            text: "Başlat"
+            font_size:50
+            size_hint: (0.2,0.2)
+            pos_hint: {"x":0.5,"y":0.5}
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "left"
+               
+        Label:  
+            text: ""
+
+        Label:  
+            text: ""
+        RoundedButton22:
+            text: "Kurallar"
+            font_size:50
+            size_hint: (0.2,0.2)
+            pos_hint: {"x":0.5,"y":0.5}
+            on_release:
+                app.root.current = "rule"
+                root.manager.transition.direction = "left"
+        Label:  
+            text: ""
+
+        Label:  
+            text: ""
+        RoundedButton32:
+            text: "Ayarlar"
+            font_size:50
+            size_hint: (0.2,0.2)
+            pos_hint: {"x":0.5,"y":0.5}
+            on_release:
+                app.root.current = "options"
+                root.manager.transition.direction = "left"
+        Label:  
+            text: ""
+
+        Label:  
+            text: ""
+        RoundedButton42:
+            text: "Çıkış"
+            font_size:50
+            size_hint: (0.2,0.2)
+            pos_hint: {"x":0.5,"y":0.5}
+            on_release:
+                #app.root.current = "main"
+                on_press: app.stop()
+        Label:  
+            text: ""
+
+        Label:  
+            text: ""
+        Label:  
+            text: ""
+        Label:  
+            text: ""
+
+
+<RoundedButton12@Button>:
+    background_color: (0,0,0,0)
+    background_normal:""
+    canvas.before:
+        Color:
+            rgba: (48/255,84/255,150/255,1)
+        RoundedRectangle:
+            size: self.size
+            pos : self.pos
+            radius:[80]
+
+<RoundedButton22@Button>:
+    background_color: (0,0,0,0)
+    background_normal:""
+    canvas.before:
+        Color:
+            rgba: (48/255,84/255,150/255,1)
+        RoundedRectangle:
+            size: self.size
+            pos : self.pos
+            radius:[80]
+
+<RoundedButton32@Button>:
+    background_color: (0,0,0,0)
+    background_normal:""
+    canvas.before:
+        Color:
+            rgba: (48/255,84/255,150/255,1)
+        RoundedRectangle:
+            size: self.size
+            pos : self.pos
+            radius:[80]
+<RoundedButton42@Button>:
+    background_color: (0,0,0,0)
+    background_normal:""
+    canvas.before:
+        Color:
+            rgba: (48/255,84/255,150/255,1)
+        RoundedRectangle:
+            size: self.size
+            pos : self.pos
+            radius:[80]
+
+
+
+<MainWindow>
+    name : "main"
+    canvas.before:
+        Rectangle:
+            id : mainwall
             pos: self.pos
             size: self.size
             source: 'background.png'
@@ -27,7 +298,7 @@
                 text: "0 / 0"
                 font_size : 90
             Label:
-                id:playerisim
+                id: playerisim
                 font_size : 80
                 text: "Player"
                 color : "#FFFFFF"
@@ -93,4 +364,19 @@
                 font_size : 60
                 background_color :"#0EEB12"
                 on_release:  root.adam(), root.ulti_dolum()
-                
+        GridLayout:
+            size_hint : 1,0.1
+            cols : 3     
+            Button:
+                text: "Geri"
+                font_size : 30
+                background_color :"#0EEB12"
+                on_release:
+                    app.root.current = "first"
+                    root.manager.transition.direction = "right"
+                    root.back()
+
+            Label :
+                text : ""
+            Label :
+                text : ""
